@@ -1,0 +1,184 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: Adam Scherer
+      changes:
+        - createTable:
+            tableName: user
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: first_name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: 2
+      author: Adam Scherer
+      changes:
+        - insert:
+            tableName: user
+            columns:
+              - column:
+                  name: user_id
+                  value: ascherer
+              - column:
+                  name: first_name
+                  value: Adam
+              - column:
+                  name: last_name
+                  value: Scherer
+  - changeSet:
+      id: 3
+      author: Adam Scherer
+      changes:
+        - createTable:
+            tableName: attribute_group
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: label
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: internal_name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: varchar(512)
+  - changeSet:
+      id: 3.1
+      author: Adam Scherer
+      changes:
+        - insert:
+            tableName: attribute_group
+            columns:
+              - column:
+                  name: label
+                  value: Default
+              - column:
+                  name: internal_name
+                  value: default
+              - column:
+                  name: description
+                  value: The default group for each attribute.
+  - changeSet:
+      id: 4
+      author: Adam Scherer
+      changes:
+        - createTable:
+            tableName: attribute
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: label
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: internal_name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: varchar(512)
+              - column:
+                  name: field_type
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: group_id
+                  type: int
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: 5
+      author: Adam Scherer
+      changes:
+        - createTable:
+            tableName: attribute_history
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: attribute_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: changed_to
+                  type: varchar(4000)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: modified_on
+                  type: datetime
+                  constraints:
+                    nullable: false
+              - column:
+                  name: source
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: 6
+      author: Adam Scherer
+      changes:
+        - createTable:
+            tableName: sku_entity
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: attribute_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: value
+                  type: varchar(4000)
+                  constraints:
+                    nullable: false
