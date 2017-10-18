@@ -1,13 +1,26 @@
 schema {
     query: Query
+    mutation: Mutation
 }
 
 type Query {
+    users: [User]
     user(id: Int!): User
+}
+
+type Mutation {
+    createUser (input: UserInput): User
+    updateUser (id: ID!, input: UserInput): User
 }
 
 type User {
     id: Int!
+    userId: String!
+    firstName: String!
+    lastName: String!
+}
+
+input UserInput {
     userId: String!
     firstName: String!
     lastName: String!
