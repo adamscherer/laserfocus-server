@@ -1,0 +1,77 @@
+/*
+schema {
+    query: SkuQuery
+    mutation: SkuMutation
+}
+
+type SkuQuery {
+    users: [User]
+    user(id: Int!): User
+}
+
+type SkuMutation {
+    createUser (input: UserInput): User
+    updateUser (id: ID!, input: UserInput): User
+}
+
+type Sku {
+    id: Int!
+    name: String!
+    status: SkuStatus
+    dateCreated: Int!
+    dateIntroduced: Int
+    attributes: [Attribute!]
+    attributeGroups: [AttributeGroup!]
+}
+
+type Attribute {
+    id: Int!
+    label: String!
+    internalName: String!
+    description: String
+    fieldType: FieldType!
+}
+
+type AttributeGroup {
+    id: Int!
+    label: String!
+    internalName: String!
+    description: String
+    attributes: [Attribute!]
+}
+
+type AttributeHistory {
+    id: Int!
+    attribute: Attribute!
+    changedTo: String!
+    modifiedOn: Int!
+    source: String!
+}
+
+input AttributeInput {
+    userId: String!
+    firstName: String!
+    lastName: String!
+}
+
+enum FieldType {
+    SINGLE_LINE_TEXT,
+    MULTI_LINE_TEXT,
+    NUMBER,
+    RADIO_SELECT,
+    DROPDOWN_SELECT,
+    SINGLE_CHECKBOX,
+    MULTI_CHECKBOX
+}
+
+enum SkuStatus {
+    DRAFT,
+    NEW,
+    INPUT_IN_PROCESS,
+    HOLD,
+    CANCEL_ABANDON,
+    WAITING_DECISION,
+    ENDORSED,
+    REJECTED
+}
+*/

@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 /**
  *
@@ -22,11 +23,12 @@ public class SkuEntity {
     private long id;
 
     @NotNull
-    @ManyToOne
-    @JoinColumn(name = "attribute_id")
-    private Attribute attribute;
+    private String name;
 
     @NotNull
-    private String value;
+    private Date createdOn;
+
+    @NotNull
+    private Date modifiedOn;
 
 }

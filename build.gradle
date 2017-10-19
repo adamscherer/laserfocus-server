@@ -36,6 +36,7 @@ dependencies {
     compile("com.graphql-java:graphql-spring-boot-starter:3.9.2")
     compile("com.graphql-java:graphiql-spring-boot-starter:3.9.2")
     compile("com.graphql-java:graphql-java-tools:4.1.2")
+    compile('org.modelmapper:modelmapper:1.1.0')
     compile("org.liquibase:liquibase-core")
     runtime("com.h2database:h2")
     testCompile("org.springframework.boot:spring-boot-starter-test")

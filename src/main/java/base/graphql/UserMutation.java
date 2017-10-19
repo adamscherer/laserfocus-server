@@ -2,6 +2,7 @@ package base.graphql;
 
 import base.model.User;
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -10,16 +11,16 @@ import org.springframework.stereotype.Component;
  * @since 1.0
  */
 @Component
-public class Mutation implements GraphQLMutationResolver {
+public class UserMutation implements GraphQLMutationResolver {
+
+    private static final ModelMapper modelMapper = new ModelMapper();
 
     @Autowired
     private base.repository.UserRepository userRepository;
 
     public User createUser(UserInput input) {
-        User user = new User();
-        user.setUserId(input.getUserId());
-        user.setFirstName(input.getFirstName());
-        user.setLastName(input.getLastName());
+        User user = modelMapper.map(input, User.class);
+
         return userRepository.save(user);
     }
 
@@ -29,9 +30,8 @@ public class Mutation implements GraphQLMutationResolver {
             return null;
         }
 
-        user.setUserId(input.getUserId());
-        user.setFirstName(input.getFirstName());
-        user.setLastName(input.getLastName());
+        modelMapper.map(input, user);
+
         return userRepository.save(user);
     }
 }

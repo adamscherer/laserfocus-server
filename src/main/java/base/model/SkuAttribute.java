@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.List;
 
 /**
  *
@@ -17,30 +16,20 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Attribute {
+public class SkuAttribute {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @NotNull
-    private String label;
-
-    @NotNull
-    private String internalName;
-
-    private String description;
-
-    @NotNull
-    @Enumerated(EnumType.STRING)
-    private FieldType fieldType;
+    private long skuId;
 
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "group_id")
-    private AttributeGroup attributeGroup;
+    @JoinColumn(name = "attribute_id")
+    private Attribute attribute;
 
     @NotNull
-    private int displayOrder;
+    private String value;
 
-    //private List<AttributeOption> options;
 }
