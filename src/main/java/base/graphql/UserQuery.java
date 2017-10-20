@@ -12,7 +12,7 @@ import java.util.List;
  * @since 1.0
  */
 @Component
-public class Query implements GraphQLQueryResolver {
+public class UserQuery implements GraphQLQueryResolver {
 
     @Autowired
     private base.repository.UserRepository userRepository;
